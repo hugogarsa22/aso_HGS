@@ -2,11 +2,9 @@
 ### 1. Preparación de la máquina y configuración de la red
 En la máquina virtual añadimos un nuevo adaptador de red "Adaptador solo anfitrión"
 
-![alt text](image.png)
-
 Encendemos de nuevo la máquina y entramos para configurar el adaptador creado comprobar las direcciones ip.
 
-![alt text](image1.png)
+
 
 
 
