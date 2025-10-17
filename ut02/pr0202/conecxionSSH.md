@@ -2,7 +2,6 @@
 ### 1. Preparación de la máquina y configuración de la red
 En la máquina virtual añadimos un nuevo adaptador de red "Adaptador solo anfitrión"
 
-<<<<<<< HEAD
 ![alt text](adaptador.png)
 
 IP de la máquina virtual (Ubuntu):
@@ -39,40 +38,40 @@ En Windows, para que el nombre del servidor Ubuntu se resuelva localmente, abre 
 ![alt text](hosts2.png)
 ![alt text](pingHGS.png)
 
-### 2. Creación del usuario y conexión SSH
-Para crear el usuario en Ubuntu, abre la terminal y ejecuta el comando sudo adduser HGS_ssh, sustituyendo “HGS” por tus iniciales reales. El sistema te pedirá que introduzcas una contraseña para el nuevo usuario y algunos datos opcionales como nombre completo, número de teléfono, etc. Una vez creado, asegúrate de que el servicio SSH esté instalado y activo. Puedes comprobarlo con sudo systemctl status ssh, y si no está instalado, puedes hacerlo con sudo apt install openssh-server.
 
-Para permitir que el nuevo usuario se conecte mediante SSH con contraseña, simplemente asegúrate de que el archivo /etc/ssh/sshd_config tenga la opción PasswordAuthentication yes habilitada. Si haces cambios en ese archivo, reinicia el servicio SSH con sudo systemctl restart ssh. Luego, desde el equipo anfitrión (Windows), puedes usar una herramienta como PuTTY o el comando ssh HGS_ssh@192.168.56.106 para conectarte, introduciendo la contraseña cuando se te solicite.
-Una vez que hayas verificado que la conexión por contraseña funciona correctamente, puedes configurar la autenticación mediante claves pública y privada. Para ello, desde el equipo anfitrión, ejecuta ssh-keygen y genera un par de claves. Luego copia la clave pública al servidor Ubuntu con el comando ssh-copy-id HGS_ssh@192.168.56.106. Esto permitirá que el usuario se conecte sin necesidad de introducir la contraseña cada vez.
+### 2. Creación del usuario y conexión SSH
+
+Para crear el usuario en Ubuntu, abre la terminal y ejecuta el comando sudo adduser HGS_ssh, sustituyendo “HGS” por tus iniciales reales. El sistema te pedirá que introduzcas una contraseña para el nuevo usuario y algunos datos opcionales como nombre completo, número de teléfono, etc.
+
+![alt text](adduser.png)
+
+
+Para permitir que el nuevo usuario se conecte mediante SSH 
+con contraseña, puedes usar una herramienta como PuTTY o el
+ comando ssh HGS_ssh@192.168.56.106 para conectarte
+  introduciendo la contraseña cuando se te solicite
+
+![alt text](HGSssh.png)
+
+Una vez que hayas verificado que la conexión por contraseña 
+funciona correctamente, puedes configurar la autenticación
+mediante claves pública y privada. Para ello, desde el 
+equipo anfitrión, ejecuta ssh-keygen y genera un par de 
+claves.
+ 
+ ![alt text](clavessh.png)
+
+Primero accedes al servidor Ubuntu usando SSH con contraseña, escribiendo en tu terminal ssh HGS_ssh@192.168.56.106. Una vez dentro, creas el directorio .ssh en el home del usuario si no existe, con el comando mkdir -p ~/.ssh. Luego abres el archivo authorized_keys con un editor de texto como nano ~/.ssh/authorized_keys. Dentro del editor, pegas la clave pública que tienes: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKEf1wTL12tmfucekuUgwAuZtG22b4ECYv9CLPziNk+h. Guardas el archivo presionando Ctrl+O, luego Enter, y sales con Ctrl+X. Después aseguras los permisos del directorio y del archivo con los comandos chmod 700 ~/.ssh y chmod 600 ~/.ssh/authorized_keys. Finalmente, sales del servidor y pruebas la conexión desde tu máquina local con ssh HGS_ssh@192.168.56.106, y si todo está bien, ya no se te pedirá la contraseña.
+
+ ![alt text](sincontraseña.png)
+
 ### 3. Conexión transparente a Github
 
 
 Cuando ya tengas configurada la autenticación por clave en Ubuntu, puedes aplicar el mismo método para conectarte a GitHub sin contraseña. Accede a tu cuenta de GitHub, ve a tu perfil, entra en “Settings” y luego en “SSH and GPG keys”. Allí puedes añadir tu clave pública (el contenido del archivo ~/.ssh/id_rsa.pub). Una vez guardada, podrás clonar, hacer push y pull desde tus repositorios sin tener que introducir tu usuario y contraseña cada vez.
-=======
-Encendemos de nuevo la máquina y entramos para configurar el adaptador creado comprobar las direcciones ip.
+.
 
+ ![alt text](sshgithub.png)
+ ![alt text](sshgit.png)
 
-
-
-
-
-
-
-Para cambiar el hostname de la máquina abrimos una terminal y utilizamos el comando hostnamectl:
-```bash
-usuario@hugo:~$ sudo hostnamectl set-hostname hgs_server
-usuario@hugo:~$ sudo hostnamectl
- Static hostname: hgsserver
- Pretty hostname: hgs_server
-       Icon name: computer-vm
-         Chassis: vm
-      Machine ID: a626621cad4e40a694106590139e8181
-         Boot ID: bd5dcb048ef94f44b3010c37487d8360
-  Virtualization: oracle
-Operating System: Ubuntu 22.04.3 LTS
-          Kernel: Linux 5.15.0-84-generic
-    Architecture: x86-64
- Hardware Vendor: innotek GmbH
-  Hardware Model: VirtualBox
->>>>>>> 2678831920c4a938cf38e5391fbff7efe2a7a1cd
 ```
