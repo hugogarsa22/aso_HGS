@@ -60,4 +60,216 @@ Con esto puedes ver fácilmente qué está usando más recursos y quién lo est�
 
 Por defecto, top se actualiza cada pocos segundos. Si quieres cambiar ese ritmo, solo tienes que pulsar la tecla d mientras estás dentro de top. Te pedirá que pongas un número, que será el nuevo intervalo en segundos. Por ejemplo, si pones 1, se actualizará cada segundo.
 
-### 3
+### 3 Detener y reanudar procesos
+
+Lo primero que hacemos es lanzar un proceso que se queda “dormido” durante 300 segundos. Para eso usamos el comando:
+
+```bash
+sleep 300 &
+```
+El símbolo & hace que el proceso se ejecute en segundo plano, así que podemos seguir usando la terminal sin esperar a que termine.
+
+Para ver los trabajos que están corriendo en segundo plano, usamos:
+
+```bash
+jobs
+```
+
+Esto nos muestra una lista con los procesos que están activos. En mi caso: [1]+ Running sleep 300 & Aquí el número entre corchetes es el ID del trabajo.
+
+Ahora vamos a parar ese proceso temporalmente. Primero buscamos su PID (identificador del proceso) con:
+
+```bash
+ps aux | grep sleep
+```
+En mi caso devuelve : ```bash usuario     1445  0.0  0.0   5756  2212 pts/0    S    08:52   0:00 sleep 300 ```
+Una vez que tenemos el PID, lo detenemos con:
+
+```bash
+kill -SIGSTOP 1445
+```
+Para comprobar que el proceso está realmente detenido, usamos:
+
+```bash
+ps -o pid,stat,cmd -p 1445
+```
+Si en la columna STAT aparece una “T”, significa que el proceso está parado.
+
+```bash
+usuario@hugo:~$ ps -o pid,stat,cmd -p 1445
+    PID STAT CMD
+   1445 T    sleep 300
+
+[1]+  Stopped                 sleep 300
+```
+
+
+Para que el proceso vuelva a funcionar, usamos:
+
+```bash
+kill -SIGCONT 1445
+```
+Y para asegurarnos de que está en marcha otra vez:
+
+```bash
+ps -o pid,stat,cmd -p 1445
+```
+Ahora el estado debería ser “S” (durmiendo) o “R” (ejecutándose).
+
+En mi caso:
+```bash
+usuario@hugo:~$ ps -o pid,stat,cmd -p 1445
+    PID STAT CMD
+   1445 S    sleep 300
+usuario@hugo:~$
+```
+Preguntas sobre este apartado
+
+¿Qué hace la señal SIGSTOP en un proceso?
+ Lo detiene completamente. El proceso se queda congelado y no puede seguir funcionando hasta que se le diga lo contrario. No puede ignorar esta señal.
+
+¿Cómo sé si un proceso está detenido o activo?
+ Usando el comando ps con la opción -o stat. Si ves una “T” en el estado, está detenido. Si ves una “S” o una “R”, está activo.
+
+### 4 Terminar procesos
+Primero creamos un proceso en segundo plano que se queda “dormido” durante 600 segundos. Usamos el siguiente comando:
+
+```bash
+sleep 600 &
+```
+El símbolo & hace que el proceso se ejecute en segundo plano, permitiéndonos seguir usando la terminal.
+
+Para encontrar el PID (identificador del proceso), usamos:
+
+```bash
+ps aux | grep sleep
+```
+Esto nos mostrará una línea con información del proceso sleep, incluyendo su PID.
+usuario     1457  0.0  0.0   5756  2212 pts/0    S    08:57   0:00 sleep 600
+Para terminar el proceso de forma ordenada, usamos la señal SIGTERM:
+
+```bash
+kill -SIGTERM 1457
+```
+Para verificar que el proceso fue eliminado, usamos:
+
+```bash
+ps -p 1457
+```
+Si no aparece nada, significa que el proceso ya no está activo.
+```bash
+usuario@hugo:~$ ps -p 1457
+    PID TTY          TIME CMD
+[2]+  Terminated              sleep 600
+```
+¿Qué diferencia hay entre las señales SIGTERM y SIGKILL?
+
+La señal SIGTERM solicita al proceso que finalice de forma ordenada. Esto permite que el proceso cierre correctamente sus recursos, como archivos abiertos o conexiones.
+Por otro lado, SIGKILL fuerza la terminación inmediata del proceso. No le da oportunidad de realizar ninguna limpieza o cierre adecuado.
+
+¿Por qué es preferible utilizar SIGTERM antes que SIGKILL para terminar un proceso?
+
+Porque SIGTERM permite que el proceso finalice de manera controlada, evitando posibles pérdidas de datos o estados inconsistentes.
+SIGKILL se utiliza únicamente cuando el proceso no responde a otras señales, ya que interrumpe su ejecución de forma abrupta y puede generar efectos no deseados en el sistema.
+
+### 5 Prioridades de procesos
+Creamos un proceso con prioridad baja usando el comando nice:
+
+```bash
+nice -n 10 sleep 300 &
+```
+El valor 10 indica una prioridad menor, lo que significa que el proceso tendrá menos preferencia para usar el CPU.
+
+Para ver la prioridad del proceso, usamos:
+
+```bash
+ps -l
+```
+En la columna NI (nice value) veremos el valor asignado.
+```bash
+usuario@hugo:~$ ps -l
+F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 S  1000    1393    1392  0  80   0 -  2490 do_wai pts/0    00:00:00 bash
+0 S  1000    1468    1393  0  90  10 -  1439 hrtime pts/0    00:00:00 sleep
+0 R  1000    1469    1393  0  80   0 -  2459 -      pts/0    00:00:00 ps
+```
+Para cambiar la prioridad del proceso, usamos el comando renice. Por ejemplo, para cambiarla a 5:
+
+```bash
+sudo renice -n 5 -p 1445
+```
+Y verificamos el cambio con:
+
+```bash
+ps -l
+```
+```bash
+usuario@hugo:~$ ps -l
+F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 S  1000    1393    1392  0  80   0 -  2490 do_wai pts/0    00:00:00 bash
+0 S  1000    1468    1393  0  85   5 -  1439 hrtime pts/0    00:00:00 sleep
+0 R  1000    1480    1393 99  80   0 -  2459 -      pts/0    00:00:00 ps
+```
+
+¿Para qué sirve el comando nice?
+
+El comando nice se usa para iniciar un proceso con una prioridad específica. Sirve para indicar al sistema cuánta prioridad le debe dar a ese proceso al momento de asignar recursos del procesador. Cuanto más “agradable” (más nice) sea un proceso, menos prioridad tendrá, dejando paso a otros procesos más importantes.
+
+¿Qué rango de valores puede tomar la prioridad (nice value) de un proceso y qué significa cada extremo?
+
+El valor de nice puede ir desde -20 hasta 19:
+-20: máxima prioridad (el proceso tendrá preferencia para usar el CPU).
+0: prioridad normal (valor por defecto).
+19: mínima prioridad (el proceso solo usará el CPU cuando no haya otros procesos más importantes).
+
+¿Qué ocurre si intentas cambiar la prioridad de un proceso que no te pertenece?
+
+El sistema no te lo permite. Solo el usuario root (administrador) puede cambiar la prioridad de procesos que pertenecen a otros usuarios. Si lo intentas sin permisos, recibirás un mensaje de error.
+
+### 6 Procesos en primer y segundo plano
+Ejecutamos un proceso en primer plano que duerme durante 200 segundos:
+
+```bash
+sleep 200
+```
+Mientras está corriendo, lo detenemos temporalmente con la combinación de teclas:
+
+Ctrl + Z
+Esto lo suspende y lo deja en segundo plano. Para ver los trabajos activos:
+
+```bash
+usuario@hugo:~$ jobs
+[1]-  Running                 nice -n 10 sleep 300 &
+[2]+  Stopped                 sleep 200
+usuario@hugo:~$
+```
+Para reanudar el proceso en segundo plano, usamos:
+
+```bash
+usuario@hugo:~$ bg
+[2]+ sleep 200 &
+```
+Y para traerlo de nuevo al primer plano:
+
+```bash
+usuario@hugo:~$ fg
+sleep 200
+```
+Si hay varios trabajos en segundo plano, usamos:
+
+```bash
+fg %n
+```
+Donde n es el número del trabajo que queremos traer al frente.
+
+¿Qué significa que un proceso está en segundo plano?
+
+Un proceso en segundo plano es aquel que sigue ejecutándose pero no bloquea la terminal. Esto permite al usuario seguir escribiendo otros comandos mientras el proceso continúa trabajando.
+
+¿Qué comando utilizarías para mover un proceso detenido a segundo plano?
+
+El comando que se utiliza es bg. Este comando reanuda el proceso que fue detenido (por ejemplo, con Ctrl+Z) y lo coloca en segundo plano.
+
+¿Cómo puedes traer un proceso de segundo plano a primer plano si tienes múltiples trabajos en segundo plano?
+
+Primero se usa el comando jobs para ver la lista de trabajos en segundo plano. Luego, para traer uno al primer plano, se usa fg %n, donde n es el número del trabajo que aparece en la lista de jobs.
