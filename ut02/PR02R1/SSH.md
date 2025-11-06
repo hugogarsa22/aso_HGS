@@ -1,7 +1,7 @@
 # PR02R1: Conexión remota con SSH entre redes
 # Documentación de la Práctica: Conexión Remota SSH
 
-A continuación se documentan los pasos de la práctica basándose en las capturas de pantalla proporcionadas.
+
 
 ---
 
