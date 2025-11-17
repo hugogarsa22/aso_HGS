@@ -108,3 +108,11 @@ until [ "$input" == "$password" ];
 done
 echo "Contraseña correcta"
 ```
+### 11. Adivinar un número
+```bash
+#!/bin/bash
+numero=$((RANDOM % 10 + 1))
+intento=0
+while [ $intento -ne $numero ];
+ do
+ 
