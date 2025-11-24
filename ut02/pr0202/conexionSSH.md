@@ -75,3 +75,5 @@ Cuando ya tengas configurada la autenticación por clave en Ubuntu, puedes aplic
  ![alt text](sshgit.png)
 
 ```
+
+[Volver al índice](../../index.md)

@@ -273,3 +273,5 @@ El comando que se utiliza es bg. Este comando reanuda el proceso que fue detenid
 ¿Cómo puedes traer un proceso de segundo plano a primer plano si tienes múltiples trabajos en segundo plano?
 
 Primero se usa el comando jobs para ver la lista de trabajos en segundo plano. Luego, para traer uno al primer plano, se usa fg %n, donde n es el número del trabajo que aparece en la lista de jobs.
+
+[Volver al índice](../../index.md)

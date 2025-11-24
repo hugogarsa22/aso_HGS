@@ -69,3 +69,5 @@
 | **`/var/log/auth.log`** | Servidor Linux | Registro de todos los eventos de **autenticación** del sistema, incluyendo los intentos y éxitos de conexión SSH. Es esencial para la auditoría de seguridad. |
 | **`/etc/hosts.allow`** | Servidor Linux |  Define qué hosts o redes **tienen permitido** el acceso a ciertos servicios de red (incluido SSH, si está configurado). |
 | **`/etc/hosts.deny`** | Servidor Linux |  Define qué hosts o redes **tienen prohibido** el acceso a ciertos servicios de red. |
+
+[Volver al índice](../../index.md)
