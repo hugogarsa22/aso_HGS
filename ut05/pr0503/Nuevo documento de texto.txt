@@ -1,0 +1,28 @@
+# PR0503: GPOs
+Herramientas -> Administración de directivas de grupo. Donde vamos a crear la GPO :
+![Paso 1](img/1.png)
+Con Nombre:
+![Paso 2](img/2.png)
+
+![Paso 3](img/3.png)
+
+![Paso 4](img/4.png)
+
+![Paso 5](img/5.png)
+![Paso 6](img/6.png)
+![Paso 7](img/7.png)
+![Paso 8](img/8.png)
+
+![Paso 9](img/9.png)
+![Paso 10](img/10.png)
+![Paso 11](img/11.png)
+![Paso 12](img/12.png)
+![Paso 13](img/13.png)
+![Paso 14](img/14.png)
+![Paso 15](img/15.png)
+![Paso 16](img/16.png)
+![Paso 17](img/17.png)
+![Paso 18](img/18.png)
+![Paso 19](img/19.png)
+
+[Volver al índice](../../index.md)
