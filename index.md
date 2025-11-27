@@ -21,4 +21,4 @@
 
 [PR0502: Carpetas personales y compartidas por un grupo](/ut05/pr0502/Carpetaspersonalesycompartidas.md)
 
-[PR0503: GPOs](/ut05/pr0503/pr0503.md)
+[PR0503: GPOs](/ut05/pr0503/GPO.md)
