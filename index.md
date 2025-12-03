@@ -22,3 +22,5 @@
 [PR0502: Carpetas personales y compartidas por un grupo](/ut05/pr0502/Carpetaspersonalesycompartidas.md)
 
 [PR0503: GPOs](/ut05/pr0503/GPO.md)
+
+[PR0504: Directivas de seguridad, GPP y Filtros WMI](/ut05/pr0504/Directivasdeseguridad_GPP_FiltrosWMI.md)
