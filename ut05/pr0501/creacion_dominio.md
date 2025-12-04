@@ -60,6 +60,5 @@
 ### Paso 20
 ![Paso 20](img/20.png)
 
-
-
+ 
 [Volver al índice](../../index.md)
