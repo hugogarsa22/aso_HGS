@@ -61,3 +61,5 @@ Muestra la lista de los últimos comandos ejecutados en la sesión actual.
 
 ### 6.2 Exportación de datos  
 Exporta todo tu historial de comandos actual a un archivo en formato **CSV** llamado `historial_lab.csv`.
+
+[Volver al índice](../../index.md)
