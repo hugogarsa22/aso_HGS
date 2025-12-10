@@ -1,4 +1,4 @@
-# PR0601: El pipeline en Powershell
+# PR0602: El pipeline en Powershell
 
 Realiza las siguientes tareas que se te piden utilizando **Powershell**. Para contestar lo mejor es que hagas una captura de pantalla donde se vea el comando que has introducido y las primeras líneas de la salida de este.
 
@@ -8,7 +8,8 @@ PS C:\WINDOWS\system32> Get-Date -Format "yyyy"
 2025
 ```
 2. Uno de los requisitos de Windows 11 es que es procesador tenga **TPM** habilitado. Powershell dispone del comando `Get-TPM` que nos muestra información sobre este módulo. Muestra por pantalla, en formato tabla, las propiedades `TpmPresent`, `TpmReady`, `TpmEnabled` y `TpmActivated`.
-``` bash
+
+```bash
 Get-TPM | Format-Table TpmPresent, TpmReady, TpmEnabled, TpmActivated
 
 ```
