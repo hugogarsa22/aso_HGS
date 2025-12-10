@@ -26,4 +26,6 @@
 [PR0504: Directivas de seguridad, GPP y Filtros WMI](/ut05/pr0504/Directivasdeseguridad_GPP_FiltrosWMI.md)
 ## UT06
 [PR0601: PowerShell](/ut06/pr0601/Powershell.md)
+
+
 [PR0602: Pipeline en PowerShell](/ut06/pr0602/pipeline.md)
