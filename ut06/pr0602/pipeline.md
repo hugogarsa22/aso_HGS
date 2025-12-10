@@ -2,26 +2,29 @@
 
 Realiza las siguientes tareas que se te piden utilizando **Powershell**. Para contestar lo mejor es que hagas una captura de pantalla donde se vea el comando que has introducido y las primeras líneas de la salida de este.
 
-1. El comando `Get-Date` muestra la fecha y hora actual. Muestra por pantalla únicamente el año en que estamos.
+## 1. El comando `Get-Date` muestra la fecha y hora actual. Muestra por pantalla únicamente el año en que estamos.
 ``` bash
-PS C:\WINDOWS\system32> Get-Date -Format "yyyy"
+
+PS C:\WINDOWS\system32 > Get-Date -Format "yyyy"
 2025
 ```
-2. Uno de los requisitos de Windows 11 es que es procesador tenga **TPM** habilitado. Powershell dispone del comando `Get-TPM` que nos muestra información sobre este módulo. Muestra por pantalla, en formato tabla, las propiedades `TpmPresent`, `TpmReady`, `TpmEnabled` y `TpmActivated`.
+
+## 2. Uno de los requisitos de Windows 11 es que es procesador tenga **TPM** habilitado. Powershell dispone del comando `Get-TPM` que nos muestra información sobre este módulo. Muestra por pantalla, en formato tabla, las propiedades `TpmPresent`, `TpmReady`, `TpmEnabled` y `TpmActivated`.
 
 ```bash
-PS C:\Windows\system32> Get-TPM | Format-Table TpmPresent, TpmReady, TpmEnabled, TpmActivated
+PS C:\Windows\system32 > Get-TPM | Format-Table TpmPresent, TpmReady, TpmEnabled, TpmActivated
 
 TpmPresent TpmReady TpmEnabled TpmActivated
 ---------- -------- ---------- ------------
       True     True       True         True
 
 ```
-En los siguientes ejercicios trabajaremos con los ficheros devueltos por el comando `Get-ChildItem C:\Windows\System32`.
 
-3. Muestra por pantalla el número de ficheros y directorios que hay en ese directorio.
+## 3. Muestra por pantalla el número de ficheros y directorios que hay en ese directorio.
+
 ```bash
-PS C:\WINDOWS\system32> Get-ChildItem  | Measure-Object
+
+PS C:\WINDOWS\system32 > Get-ChildItem  | Measure-Object
 
 
 Count    : 4960
@@ -30,10 +33,13 @@ Sum      :
 Maximum  :
 Minimum  :
 Property :
+
 ```
-4. Los objetos devueltos por el comando anterior tienen una propiedad denominada `Extension`, que indica la extensión del archivo. Calcula el número de ficheros en el directorio que tienen la extensión `.dll`.
+## 4. Los objetos devueltos por el comando anterior tienen una propiedad denominada Extension, que indica la extensión del archivo. Calcula el número de ficheros en el directorio que tienen la extensión .dll.
+
 ```bash
-PS C:\WINDOWS\system32> Get-ChildItem | Where-Object {$_.Extension -eq ".dll"} | Measure-Object
+
+PS C:\WINDOWS\system32 > Get-ChildItem | Where-Object {$_.Extension -eq ".dll"} | Measure-Object
 
 
 Count    : 3631
@@ -42,16 +48,16 @@ Sum      :
 Maximum  :
 Minimum  :
 Property :
+
 ```
 
-5. Muestra los ficheros del directorio con extensión `.exe` que tengan un tamaño superior a 50000 bytes.
+## 5. Muestra los ficheros del directorio con extensión .exe que tengan un tamaño superior a 50000 bytes.
 
 ```bash
-PS C:\Windows\system32> Get-ChildItem | Where-Object { $_.Extension -eq ".exe" -and $_.Length -gt 50000 }
 
+PS C:\Windows\system32 > Get-ChildItem | Where-Object { $_.Extension -eq ".exe" -and $_.Length -gt 50000 }
 
     Directorio: C:\Windows\system32
-
 
 Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
@@ -504,9 +510,12 @@ Mode                 LastWriteTime         Length Name
 
 ```
 
-6. Muestra los ficheros de este directorio que tengan extensión `.dll`, ordenados por fecha de creación y mostrando únicamente las propiedades de fecha de creación (`CreationTime`), último acceso (`LastAccessTime`) y nombre (`Name`).
+
+## 6. Muestra los ficheros de este directorio que tengan extensión `.dll`, ordenados por fecha de creación y mostrando únicamente las propiedades de fecha de creación (`CreationTime`), último acceso (`LastAccessTime`) y nombre (`Name`).
+
 ```bash
-PS C:\WINDOWS\system32> Get-ChildItem | Where-Object { $_.Extension -eq ".dll" } `
+
+PS C:\WINDOWS\system32 > Get-ChildItem | Where-Object { $_.Extension -eq ".dll" } `
 | Sort-Object CreationTime `
 | Select-Object CreationTime, LastAccessTime, Name
 18/10/2025 2:05:38  10/12/2025 18:25:28 CloudExperienceHostCommon.dll
@@ -635,10 +644,12 @@ PS C:\WINDOWS\system32> Get-ChildItem | Where-Object { $_.Extension -eq ".dll" }
 18/10/2025 2:06:02  10/12/2025 18:25:45 smphost.dll
 
 ``` 
-7. Muestra el tamaño (`Length`) y nombre completo (`FullName`) de todos los ficheros del directorio ordenados por tamaño en sentido descendente.
+
+## 7. Muestra el tamaño (Length) y nombre completo (FullName) de todos los ficheros del directorio ordenados por tamaño en sentido descendente.
 
 ```bash
-PS C:\WINDOWS\system32> Get-ChildItem | Sort-Object Length -Descending | Select-Object Length, FullName
+
+PS C:\WINDOWS\system32 > Get-ChildItem | Sort-Object Length -Descending | Select-Object Length, FullName
          C:\Windows\system32\WinBioDatabase
           C:\Windows\system32\WinBioPlugIns
           C:\Windows\system32\zh-CN
@@ -691,9 +702,11 @@ PS C:\WINDOWS\system32> Get-ChildItem | Sort-Object Length -Descending | Select-
           C:\Windows\system32\PointOfService
           C:\Windows\system32\Printing_Admin_Scripts
 ```
-8. Muestra el tamaño y nombre completo de todos los ficheros del directorio que tengan un tamaño superior a 10MB (10000000 bytes) ordenados por tamaño.
+## 8. Muestra el tamaño y nombre completo de todos los ficheros del directorio que tengan un tamaño superior a 10MB (10000000 bytes) ordenados por tamaño.
+
 ```bash
-PS C:\WINDOWS\system32> Get-ChildItem | Where-Object {$_.Length -gt 10000000} | Sort-Object Length | Select-Object Length, FullName
+
+PS C:\WINDOWS\system32 > Get-ChildItem | Where-Object {$_.Length -gt 10000000} | Sort-Object Length | Select-Object Length, FullName
 
    Length FullName
    ------ --------
@@ -718,8 +731,11 @@ PS C:\WINDOWS\system32> Get-ChildItem | Where-Object {$_.Length -gt 10000000} | 
 
 
 ```
-9. Muestra el tamaño y nombre completo de todos los ficheros del directorio que tengan un tamaño superior a 10MB y extensión `.exe` ordenados por tamaño.
+
+## 9. Muestra el tamaño y nombre completo de todos los ficheros del directorio que tengan un tamaño superior a 10MB y extensión .exe ordenados por tamaño.
+
 ```bash
+
 PS C:\Windows\system32> Get-ChildItem | Where-Object { $_.Extension -eq ".exe" -and $_.Length -gt 10000000 } `
 >> | Sort-Object Length | Select-Object Length, FullName                                                                              
    Length FullName
