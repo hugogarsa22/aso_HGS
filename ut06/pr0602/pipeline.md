@@ -82,6 +82,7 @@ PS C:\WINDOWS\system32> Get-ChildItem | Where-Object {$_.Length -gt 10000000} | 
 
 ```
 9. Muestra el tamaño y nombre completo de todos los ficheros del directorio que tengan un tamaño superior a 10MB y extensión `.exe` ordenados por tamaño.
+
 ```bash
 Ge
 
