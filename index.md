@@ -29,3 +29,9 @@
 
 
 [PR0602: Pipeline en PowerShell](/ut06/pr0602/pipeline.md)
+
+
+[PR0603: Strings en PowerShell](/ut06/pr0603/strings.md)
+
+
+[PR0604: Manipulacion de colecciones en PowerShell](/ut06/pr0604/colecciones.md)
