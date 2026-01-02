@@ -35,3 +35,6 @@
 
 
 [PR0604: Manipulacion de colecciones en PowerShell](/ut06/pr0604/colecciones.md)
+
+
+[PR0605: Limpieza de logs](/ut06/pr0605/limpiezaLogs.md)
