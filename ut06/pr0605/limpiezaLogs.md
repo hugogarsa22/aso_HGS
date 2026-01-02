@@ -55,7 +55,7 @@ foreach ($linea in $lineas) {
     $informe.Add($fila)
 }
 
-$informe | Export-Csv "reporte_seguridad.csv" -NoTypeInformation -Encoding UTF8
+$informe | Export-Csv "reporte_seguridad.csv" 
 ```
 
 
