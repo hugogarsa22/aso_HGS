@@ -38,3 +38,9 @@
 
 
 [PR0605: Limpieza de logs](/ut06/pr0605/limpiezaLogs.md)
+
+
+[PR0606: Limpieza de logs 2](/ut06/pr0606/limpiezaLogs2.md)
+
+
+[PR0607: Limpieza de datos de usuarios](/ut06/pr0607/LimpiezaDatosUsuario.md)
