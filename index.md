@@ -43,4 +43,8 @@
 [PR0606: Limpieza de logs 2](/ut06/pr0606/limpiezaLogs2.md)
 
 
-[PR0607: Limpieza de datos de usuarios](/ut06/pr0607/LimpiezaDatosUsuario.md)
+[PR0607: Limpieza de datos de usuarios](/ut06/pr0607/LimpiezaDatosUsuario.md)     
+
+[PR0608: Comparación de listas](/ut06/pr0608/ComparacionListas.md)
+
+[PR0609: Análisis de carga del procesador](/ut06/pr0609/AnalisisCargaProcesador.md)
