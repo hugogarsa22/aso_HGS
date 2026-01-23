@@ -1,7 +1,3 @@
-# PR0609: Análisis de carga del procesador
-## Objetivo: escribir un script que analice  datos crudos y genere un informe automático para decidir si es necesario comprar más procesadores o si solo fue un error puntual. 
-
-```bash
 $muestrasCPU = @(15, 12, 18, 20, 45, 88, 95, 99, 100, 98, 55, 22, 15, 10, 12, 14, 95, 99, 100, 10)
 $suma=0
 $maximo=0
@@ -34,4 +30,3 @@ Write-Host "-Incidentes Criticos (>90%): "+$contadorCritico
 Write-Host " "
 Write-Host "DIAGNOSTICO:"
 Write-Host $mensaje
-```

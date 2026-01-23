@@ -16,6 +16,12 @@
 [PR0302: Ejercicios con case](/ut03/pr0302/comando_case.md)
 
 [PR0303: Ejercicios de bucles y condicionales](/ut03/pr0303/bucles_condicionales.md)
+
+
+## UT04
+[PR0401: Administracion remota en Windows](/ut04/pr0401/AdministracionRemotaWindows.md)
+
+
 ## UT05
 [PR0501: Implantacion del dominio](/ut05/pr0501/creacion_dominio.md)
 
@@ -24,6 +30,7 @@
 [PR0503: GPOs](/ut05/pr0503/GPO.md)
 
 [PR0504: Directivas de seguridad, GPP y Filtros WMI](/ut05/pr0504/Directivasdeseguridad_GPP_FiltrosWMI.md)
+
 ## UT06
 [PR0601: PowerShell](/ut06/pr0601/Powershell.md)
 

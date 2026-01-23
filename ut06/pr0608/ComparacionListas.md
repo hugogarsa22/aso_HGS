@@ -7,7 +7,7 @@ Tu jefe te ha pasado dos listas en formato texto:
 
 1. La lista oficial de los parches (KBs) que deberían estar instalados para estar protegidos.
 
- 2. La lista real extraída de un servidor crítico (SRV-PRODUCCION) con los parches que tiene instalados actualmente.
+2. La lista real extraída de un servidor crítico (SRV-PRODUCCION) con los parches que tiene instalados actualmente.
 
 Tu objetivo es crear un script que compare ambas listas y te diga exactamente qué parches faltan para poder instalarlos manualmente.
 
