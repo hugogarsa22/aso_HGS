@@ -19,7 +19,7 @@
 
 
 ## UT04
-[PR0401: Administracion remota en Windows](/ut04/pr0401/AdministracionRemotaWindows.md)
+[PR0401: Administracion remota en Windows](/ut04/AdministracionRemotaWindows.md)
 
 
 ## UT05
