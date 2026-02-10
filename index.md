@@ -57,4 +57,4 @@
 [PR0609: Análisis de carga del procesador](/ut06/pr0609/AnalisisCargaProcesador.md)
 
 ## UT07
-[PR0701: Compartición de carpetas](/ut07/ComparticionCarpetasSamba.md)
+[PR0701: Compartición de carpetas](/ut07/pr0701/ComparticionCarpetasSamba.md)
