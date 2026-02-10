@@ -55,3 +55,6 @@
 [PR0608: Comparación de listas](/ut06/pr0608/ComparacionListas.md)
 
 [PR0609: Análisis de carga del procesador](/ut06/pr0609/AnalisisCargaProcesador.md)
+
+## UT07
+[PR0701: Compartición de carpetas](/ut07/ComparticionCarpetasSamba.md)
