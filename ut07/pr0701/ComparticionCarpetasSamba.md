@@ -5,6 +5,7 @@ Ubuntu 20.04 Desktop -> Cliente
 Windows 10 -> Cliente
 ## Realizacion
 Configuramos la red en Ubuntu Desktop:
+
 ![8](/img/8.png)
 ![9](/img/9.png)
 
@@ -13,14 +14,19 @@ Configuramos en ubuntu server como aparece en las siguientes imagenes, los pasos
 ![2](/img/2.png)
 ![3](/img/3.png)
 ![4](/img/4.png)
-![5](/img/5.png)ap
+![5](/img/5.png)
 ![6](/img/6.png)
+
 para configurar la red: entramos en 50-netplan.yaml y lo dejamos asi:
+
 ![7](/img/10.png)
+
 y para que se apliquen los cambios:
+
 ```bash
 sudo netplan apply
 ```
+
 ### Instalacion y configuracion del samba
 
 Ahora instalamos el samba en el ubuntu server con:
@@ -141,6 +147,7 @@ Probamos el acceso:
 ```bash
 smbclient //192.168.100.10/Taller -U tall01
 ```
+
 ![19](/img/19.png)
 
 
@@ -167,17 +174,24 @@ ls /mnt/Publica/
 touch /mnt/Publica/cosa.txt
 ``` 
 ![20](/img/20.png)
+
 ### Acceso desde Windows
-Creamos adm01, adm02 y ger01  y les asignamos la contraseña que les pusimos en samb:
+Creamos adm01, adm02 y ger01  y les asignamos la contraseña que les pusimos en samba:
+
 ![12](/img/12.png)
 
 Luego accedemos a \\192.168.100.10 desde el explorador de archivos  una vez iniciada sesion con adm01 y comprobamos que podemos acceder a las carpetas correspondientes a cada usuario y a la carpeta pública, pero no a las de los otros grupos.
+
 ![18](/img/18.png)
+
 ![17](/img/17.png)
+
 Si intentamos acceder con un usuario a una carpeta que no tiene permisos, sale lo siguiente:
+
 ![16](/img/16.png)
 
-En la publica podemos ver pero si intentamos crear algo dará error de permisos.
+En la publica podemos ver pero si intentamos crear algo dará error de permisos:
+
 ![15](/img/15.png)
 
 ---
